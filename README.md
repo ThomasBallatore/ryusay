@@ -12,8 +12,8 @@ Ryusay Website
 
 ## Warm up: Easy strings with review of returns
 
-(Breakout rooms)
-#1. Write a function that prints out each character of a given string, each on its own line.
+(Breakout rooms)<br>
+**#1. Write a function that prints out each character of a given string, each on its own line.**
 
 ```python
 def chars(s):
