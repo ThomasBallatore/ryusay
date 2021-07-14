@@ -13,10 +13,9 @@ Ryusay Website
 ## Warm up: Easy strings with review of returns
 
 (Breakout rooms)
-1. Write a function that prints out each character of a given string, each on its own line.
+#1. Write a function that prints out each character of a given string, each on its own line.
 
 ```python
-#3
 def chars(s):
     for c in s:
         print(c)
@@ -28,20 +27,18 @@ def chars(s):
 In main session, perhaps challenge them to change the default end="\n" of print such that the characters appear on the same line?
 
 (Main room because it is so short)
-2. Write a function that returns true if the number of characters in a given string is odd, and false if it is even.
+#2. Write a function that returns true if the number of characters in a given string is odd, and false if it is even.
 
 ```python
-#2
 def odd(s):
     return len(s) % 2 == 1
     # return len(s) % 2 != 0
 ```
 
 (Breakout rooms)
-3. Write a function that returns the fourth letter of a given string, or None if the string has fewer than 4 letters.
+#3. Write a function that returns the fourth letter of a given string, or None if the string has fewer than 4 letters.
 
 ```python
-#1
 def fourth(s):
     if len(s) < 4:
         return None
