@@ -24,9 +24,9 @@ def chars(s):
         # print s[i]
 ```
 
-In main session, perhaps challenge them to change the default end="\n" of print such that the characters appear on the same line?
+*Notes: In main session, perhaps challenge them to change the default end="\n" of print such that the characters appear on the same line?*
 
-(Main room because it is so short)
+(Main room because it is so short)<br>
 #2. Write a function that returns true if the number of characters in a given string is odd, and false if it is even.
 
 ```python
@@ -35,7 +35,7 @@ def odd(s):
     # return len(s) % 2 != 0
 ```
 
-(Breakout rooms)
+(Breakout rooms)<br>
 #3. Write a function that returns the fourth letter of a given string, or None if the string has fewer than 4 letters.
 
 ```python
@@ -44,11 +44,10 @@ def fourth(s):
         return None
     else:
         return s[3]
-
-# If an advanced group, perhaps show the "ternary" operator in Python just to expose them to it.
-# def fourth(s):
-#     return s[3] if len(s) < 4 else None
 ```
+*Notes: If an advanced group, perhaps show the "ternary" operator in Python just to expose them to it.*
+
+```python return s[3] if len(s) < 4 else None```
 
 ## More complex string operations
 
