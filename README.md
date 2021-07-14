@@ -12,7 +12,7 @@ Ryusay Website
 
 ## Warm up: Easy strings with review of returns
 
-(Breakout rooms)<br>
+*(Breakout rooms)*<br>
 **#1. Write a function that prints out each character of a given string, each on its own line.**
 
 ```python
@@ -26,8 +26,8 @@ def chars(s):
 
 *Notes: In main session, perhaps challenge them to change the default end="\n" of print such that the characters appear on the same line?*
 
-(Main room because it is so short)<br>
-#2. Write a function that returns true if the number of characters in a given string is odd, and false if it is even.
+*(Main room because it is so short)*<br>
+**#2. Write a function that returns true if the number of characters in a given string is odd, and false if it is even.**
 
 ```python
 def odd(s):
@@ -35,8 +35,8 @@ def odd(s):
     # return len(s) % 2 != 0
 ```
 
-(Breakout rooms)<br>
-#3. Write a function that returns the fourth letter of a given string, or None if the string has fewer than 4 letters.
+*(Breakout rooms)*<br>
+**#3. Write a function that returns the fourth letter of a given string, or None if the string has fewer than 4 letters.**
 
 ```python
 def fourth(s):
