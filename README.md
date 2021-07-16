@@ -96,7 +96,7 @@ print(rand_list(4))
 
 ---
 
-*(Breakout rooms but warn this one is not so easy—feel free to end early and demo)* <br>
+*(Breakout rooms)* <br>
 **3. Write a function that takes a list, and returns True if all the numbers are the same.**
 
 ```python
@@ -113,10 +113,9 @@ print(all_same([2,2,2]))
 ---
 
 
-*(Breakout rooms)* <br>
+*(Breakout rooms or if it is feeling a bit overwhelming with breakouts to this point, do in Main room to change the pace?)* <br>
 **4. Write a function that takes a list and a number N, and returns True if two adjacent 
 numbers in the list sum to N.**<br>
-Note: I skipped the original 4 in the old repo. Seems a bit harder than this one. Don't expect to have time for that one.
 
 ```python
 def adjacent(l,n):
@@ -133,7 +132,7 @@ print(adjacent([2,5,2], 4))
 
 *(Breakout rooms)* <br>
 **#5. Write a method that takes a 2_d list and returns the lengths of its rows. See code below.** <br>
-Feels like a good problem to wrap up with. I doubt anyone will show the list comp solution but that is a nice "bonus" at the end.
+Feels like a good problem to finish with. I doubt anyone will show the list comp solution but that is a nice "bonus" at the end.
 
 ```python
 def main():
