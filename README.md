@@ -131,63 +131,62 @@ print(adjacent([2,5,2], 4))
 
 ---
 
-## While loops
-
-*(Main room: take inputs from students and do it collectively. This tees up the harder question 7 below for breakout rooms.)* <br>
-**6. Convert the following for loop to a while loop:**
-```python
-for i in range(10):
-    print(i)
-```
-Answer
-```python
-counter = 0
-while counter < 10:
-    print(counter)
-    counter += 1 # Make sure they know this is counter = counter + 1 and read = as "gets" not "equals" to be instructively pedantic.
-```
-
----
-
 *(Breakout rooms)* <br>
-**7. Convert the following for loop to a while loop:**
-```python
-for i in range(30, 6, -3):
-    print(i)
-```
-Answer
-```python
-counter = 30
-while counter > 6:
-    print(counter)
-    counter -= 3
-```
-
----
-
-## Random module
-
-*(Breakout rooms, if time allows)* <br>
-**8. Write a program that randomly generates numbers in the range [1,12] and prints them, until it generates a 7, at which point it prints "Winner!".**
+**#5. Write a method that takes a 2_d list and returns the lengths of its rows. See code below.** <br>
+Feels like a good problem to wrap up with. I doubt anyone will show the list comp solution but that is a nice "bonus" at the end.
 
 ```python
-import random
+def main():
+    jagged = [
+        [1, 2, 3],
+        [4, 5],
+        [6],
+    ]
+    lengths = row_lengths(jagged)
+    print("row lengths: ", lengths)
+  
+def row_lengths(a):
+    # PROBLEM: Write a method that takes a 2_d list and returns the lengths of its rows.
 
-def lucky_seven():
-    n = 0
-    while (n != 7):
-        n = random.randint(1,12)
-        print(n)
-    print(n)
-
-lucky_seven()
+main()
 ```
+ANSWER:
+```python
+def main():
+    jagged = [
+        [1, 2, 3],
+        [4, 5],
+        [6],
+    ]
+    lengths = row_lengths(jagged)
+    print("row lengths: ", lengths)
+  
+def row_lengths(a):
+    # PROBLEM: Write a method that takes a 2_d list and returns the lengths of its rows.
 
-*Notes: Show how in the IDE, the numbers are psuedo random (or appear to be), but in Python Tutor the same result happens every time!*
+main()
+```python
+def main():
+    jagged = [
+        [1, 2, 3],
+        [4, 5],
+        [6],
+    ]
+    lengths = row_lengths(jagged)
+    print("row lengths: ", lengths)
+    
+def row_lengths(a):
+    # create list to hold length values
+    lengths = []
+    # iterate over elements of a, i.e. jagged
+    for row in a:
+    # append row to lengths
+        lengths.append(row)
+    # return list of lengths
+    return lengths
+    
+    # demo this nice list comp if it feels appropriate
+    return [len(row) for row in a]
 
-*If time allows, have them add a counter to see how many times it takes, on average, to get a 7.*
-
-*Perhaps mention how randint is just an alias for randrange(a, b+1)
-https://docs.python.org/3/library/random.html#random.randint*
-
-*Make sure people feel comfy looking up documentation!*
+main()
+```
