@@ -1,191 +1,80 @@
-# Chars and lists
+# Sets, Dicts, File I/O
 
 ## At start
 
-* Start with small talk about test. Praise students for jumping right back in to lecture and homework.
+* I'm going to take a bit of a different approach this section to mix things up. It will be a casual, chatty start through which I try to inspire introspective self-confidence to help students see how much they have learned so far...but in a way that leads into sets, dicts, and file I/O.
+* I'll start the discussion by asking what type of things have they seen so far: not conditions or loops but objects including ints, floats, bool and None (showing print(type(x)))
+* Then, I'll ask about other things that have an "inner life". strings, tuples, lists, sets, dicts and maybe range if nobody mentions it.
+* That will lead to my example given below that I work out live, step-by-step.
 
 ---
 
-## Characters are really just numbers
+## Taking attendance—showing lists, sets, dicts and how they relate
 
-Just to kick the discussion off, I'll ask people what they thought about the idea that characters are just numbers. Last section, I had actually introduced the asciibetical idea for comparing chars/strings and will just casually review it here. I'll show an ASCII table and ask if they notice that upper and lower case are 32 apart. I'll show .tolower() in some simple program. Then I'll ask how they think that works, i.e. iterating along string, changing as appropriate, etc. Maybe I'll show in decimal how it is +32, and maybe I'll show how in binary (just to remind them about binary) that going from 65 to 97 is just a simple bit flip.
-
-## Lists
-
-*(Breakout rooms)* <br>
-**#0. Write a function that takes in a list of temperatures and prints the average and how many exceeded that average. Assume the list is non-emtpy** <br>
-I like this problem as a gentle use of lists but with a good review of previous work. It feels like a good challenge to start the section with and I hope most can succeed.
+The idea is to figure out the most common letters in our collective names during section—a histogram without the figure. Each step is done live and in order of list, set then dict. Asking for student contributions the whole time.
 
 ```python
-def average_temp(temps):
-    '''Prints the average temp and number of days exceeding'''
-    ???
+# Take attendance in a list! Use last names too if only a few people. 
+names = ['henry', 'dimitri', 'ben', 'nabib', 'julia', 'sammota', 'simeon', 'devon', 'carolyn', 'thomas']
 
-def main():
-    temps = [60, 62, 85, 90, 70, 72, 84]
-    print('Temps this week:', temps)
-    average_temp(temps)
+L = list() # show []
+S = set()
+D = dict() # show {}, talk about contrast with sets
 
-main()
+for name in names:
+    for letter in name:
+
+        # List approach
+        L.append(letter)
+
+        # Unique letters in list without set
+        # if letter not in L:
+        #     L.append(letter)
+
+        # Set approach Mention hashing, non-ordering
+        S.add(letter) #show how append fails and why
+
+        # Dictionary (stress key:value pairs)
+        if letter in D:
+            D[letter] += 1
+        else:
+            D[letter] = 1
+        
+        # Show pythonic one-liner
+        D[letter] = D.get(letter, 0) + 1
+
+# Just for fun, maybe I will demonstrate sort and lambda, perhaps after input/output in which they did sorting in Excel?        
+for letter in sorted(D, key=lambda letter: D[letter], reverse=True):
+    print(f"{letter}: {D[letter]}")
+        
+# print(D) # to show what dict looks like (or do in python tutor)
 ```
-ANSWER:
+
+---
+
+## File I/O
+
+* I'll then demo how to write the output of line 48 above to a txt file basically with the following lines instead, and maybe not with sorted if I want to show how to sort in Excel to motivate the sorting discussion—I'll play that by ear.
+
 ```python
-def average_temp(temps):
-    '''Prints the average temp and number of days exceeding'''
-    average = 0
-    for t in temps:
-        average += t
-    average = average/len(temps)
-    print(f'The average temp was {average:.1f}.')
+with open("output.txt", "w") as output:
+
+    for letter in sorted(D, key=lambda letter: D[letter], reverse=True):
+        output.write(f"{letter},{D[letter]}\n")
+```
+
+* I'll then demo how to read input from a txt file. Perhaps I'll write the names of the people in section into the file. I'll show the difference between .read(), .readline(), and .readlines()
+
+```python
+with open("pset4.txt", "r") as file:
     
-    num_over = 0
-    for t in temps:
-        if t > average:
-            num_over += 1
-    print(f'And {num_over} exceeded the average.')
-
-def main():
-    temps = [60, 62, 85, 90, 70, 72, 84]
-    print('Temps this week:', temps)
-    average_temp(temps)
-
-main()
+    names = file.read() #demo readline() and readlines()
+    print(names)
 ```
 
 ---
 
-*(Breakout rooms)* <br>
-**#1. Write a function that takes a list and prints out every other item of the list.**
+## Big breakout session
 
-```python
-def every_other(l):
-    for i in range(0, len(l), 2):
-        print(l[i])
+* Finally, I'll turn it over to students to work in an extended breakout session in which they find the most common letters in the pset 4 spec! A prepared file can be found here: https://gist.github.com/ThomasBallatore/ff3d5f4ee5de0b1e4b9b2d888915f511 Let's not worry about special characters, etc. The point is there are a lot of spaces, e's and a's and one & 😂
 
-# every_other([2,3,4,5])
-```
-
----
-
-*(Main room, just asking for hands)* <br>
-**#1b. Change the function so it prints every other item starting from the back.**
-
-```python
-def other_every(l):
-    for i in range(len(l) - 1, -1, -2):
-        print(l[i])
-
-# other_every([2,3,4])
-```
-
----
-
-*(Breakout rooms)* <br>
-**#2. Write a function that takes an integer N, and creates and returns a list of N random integers between 1 and 10, inclusive.**
-
-```python
-import random
-def rand_list(n):
-    ret = []
-    for i in range(n):
-        ret.append(random.randint(1,10))
-    return ret
-
-print(rand_list(4))
-```
-
----
-
-*(Breakout rooms)* <br>
-**3. Write a function that takes a list, and returns True if all the numbers are the same.**
-
-```python
-def all_same(l):
-    for item in l:
-        if item != l[0]:
-            return False
-    return True
-
-print(all_same([2,2,4]))
-print(all_same([2,2,2]))
-```
-
----
-
-
-*(Breakout rooms or if it is feeling a bit overwhelming with breakouts to this point, do in Main room to change the pace?)* <br>
-**4. Write a function that takes a list and a number N, and returns True if two adjacent 
-numbers in the list sum to N.**<br>
-
-```python
-def adjacent(l,n):
-    for i in range(len(l)-1):
-        if l[i] + l[i+1] == n:
-            return True
-    return False
-
-print(adjacent([2,5,2], 7))
-print(adjacent([2,5,2], 4))
-```
-
----
-
-*(Breakout rooms)* <br>
-**#5. Write a method that takes a 2_d list and returns the lengths of its rows. See code below.** <br>
-Feels like a good problem to finish with. I doubt anyone will show the list comp solution but that is a nice "bonus" at the end.
-
-```python
-def main():
-    jagged = [
-        [1, 2, 3],
-        [4, 5],
-        [6],
-    ]
-    lengths = row_lengths(jagged)
-    print("row lengths: ", lengths)
-  
-def row_lengths(a):
-    # PROBLEM: Write a method that takes a 2_d list and returns the lengths of its rows.
-
-main()
-```
-ANSWER:
-```python
-def main():
-    jagged = [
-        [1, 2, 3],
-        [4, 5],
-        [6],
-    ]
-    lengths = row_lengths(jagged)
-    print("row lengths: ", lengths)
-  
-def row_lengths(a):
-    # PROBLEM: Write a method that takes a 2_d list and returns the lengths of its rows.
-
-main()
-```python
-def main():
-    jagged = [
-        [1, 2, 3],
-        [4, 5],
-        [6],
-    ]
-    lengths = row_lengths(jagged)
-    print("row lengths: ", lengths)
-    
-def row_lengths(a):
-    # create list to hold length values
-    lengths = []
-    # iterate over elements of a, i.e. jagged
-    for row in a:
-    # append row to lengths
-        lengths.append(row)
-    # return list of lengths
-    return lengths
-    
-    # demo this nice list comp if it feels appropriate
-    return [len(row) for row in a]
-
-main()
-```
